@@ -3,13 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title></title>
+<title>作業012</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/fontello.css">
 <script>
 	$(function(){
 		$("input[type='radio']").on('click',function(){
+			$('.rotate-ball').addClass('active').delay(1000).queue(function(){
+				$(this).removeClass('active').dequeue();
+			})
+		})
+		$('.rotate-ball').on('click',function(){
 			$('.rotate-ball').addClass('active').delay(1000).queue(function(){
 				$(this).removeClass('active').dequeue();
 			})
@@ -54,6 +59,8 @@ a{
 	position: fixed;
 	right: 55px;
 	top:0;
+	cursor: pointer;
+	box-shadow: 0 0 2px #FF5757;
 }
 .controls > a{
 	font-weight: 700;
@@ -102,6 +109,7 @@ a{
 	font-size: 48px;
 	color: #36162E;
 	text-shadow:0 0 3px rgba(255,255,255,.8);
+	cursor: pointer;
 }
 .rotate-ball.active .fa{
 	-webkit-animation:rotateL 1s ease-in-out;
@@ -143,6 +151,72 @@ a{
 	transition:all 0.6s ease-in-out;
 	font-family: 'Hobo Std';
 }
+
+.panel-1-btn{
+	width: 200px;
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+	border:4px solid #52616B;
+	position: absolute;
+	bottom: 20%;
+	left: 20px;
+	background: none;
+	outline: none;
+	border-radius: 8px;
+	font-size: 26px;
+	color:#52616B;
+	cursor: pointer;
+}
+.panel-1-btn:hover{
+	background: #52616B;
+	color: #fff;
+	-webkit-transition:all 1s;
+}
+.panel-2-btn{
+	width: 200px;
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+	border:4px solid #fff;
+	position: absolute;
+	bottom: 10%;
+	left: 20px;
+	background: none;
+	outline: none;
+	border-radius: 8px;
+	font-size: 26px;
+	color:#fff;
+	cursor: pointer;
+}
+.panel-2-btn:hover{
+	background: #fff;
+	color: #26282B;
+	-webkit-transition:all 1s;
+}
+.panel-3-btn{
+	width: 100px;
+	height: 100px;
+	line-height: 23px;
+	text-align: center;
+	border:4px solid #4EC9DF;
+	position: absolute;
+	bottom: 20%;
+	left: 20px;
+	background: #3576A7;
+	outline: none;
+	border-radius: 100%;
+	font-size: 26px;
+	color:#fff;
+	cursor: pointer;
+}
+.panel-3-btn:hover{
+	background: #4EC9DF;
+	color: #fff;
+	border:4px solid #3576A7;
+	-webkit-transition:all 1.5s;
+}
+
 #panel-1{
 	background-image: url('images/bg01.jpg');
 	background-size: cover;
@@ -188,7 +262,7 @@ a{
 	color: #fff;
 	font-size: 42px;
 	font-weight: 900;
-	text-shadow:0 0 2px #000;
+	text-shadow:2px 2px 0 #52616B,3px 3px 0 #52616B,4px 4px 0 #52616B,5px 5px 0 #52616B;
 	position: absolute;
 	left: 20px;
 	top: 40%;
@@ -197,7 +271,7 @@ a{
 	color: #fff;
 	font-size: 28px;
 	font-weight: 900;
-	text-shadow:0 0 2px #000;
+	text-shadow:2px 2px 0 #52616B,3px 3px 0 #52616B,4px 4px 0 #52616B,5px 5px 0 #52616B;
 	position: absolute;
 	left: 20px;
 	top: 50%;
@@ -344,10 +418,9 @@ a{
 	background-position: center center;
 }
 .panel-face-title1{
-	color: #fff;
+	color: #3D84A8;
 	font-size: 68px;
 	font-weight: 900;
-	text-shadow:0 0 2px #000;
 	position: absolute;
 	left: 20px;
 	top: 50%;
@@ -361,12 +434,15 @@ a{
 @-webkit-keyframes faceTitle{
 	0%{
 		transform:scale(0);
+		text-shadow:2px 2px 0 #1A2634;
 	}
 	50%{
 		transform:scale(3);
+		text-shadow:2px 2px 0 #1A2634,3px 3px 0 #ABEDD8;
 	}
 	100%{
 		transform:scale(1);
+		text-shadow:2px 2px 0 #1A2634,3px 3px 0 #ABEDD8,4px 4px 0 #ABEDD8,5px 5px 0 #1A2634,6px 6px 0 #48466D;
 	}
 }
 .panel-face-box{
@@ -613,7 +689,7 @@ a{
 	top: 0;
 	left: 0;
 	-webkit-transform:scale(0);
-	-webkit-animation:img01 .1s ease-in-out 1.2s forwards;
+	-webkit-animation:img01 .1s ease-in-out 1.2s forwards,img01a 1.5s ease-in-out 4s forwards;
 	z-index: 1;
 }
 @-webkit-keyframes img01{
@@ -626,12 +702,22 @@ a{
 		opacity: 1;
 	}
 }
+@-webkit-keyframes img01a{
+	0%{
+		-webkit-transform:scale(1);
+		opacity: 1
+	}
+	100%{
+		-webkit-transform:scale(1);
+		opacity: 0;
+	}
+}
 #control-4:checked ~ .box .img02{
 	position: absolute;
 	-webkit-transform:scale(0);
 	top: 0;
 	left: 0;
-	-webkit-animation:img02 .1s ease-in-out 2.5s forwards;
+	-webkit-animation:img02 .1s ease-in-out 2.5s forwards,img02a 1.5s ease-in-out 4.5s forwards;
 	z-index: 2;
 }
 @-webkit-keyframes img02{
@@ -644,12 +730,22 @@ a{
 		opacity: 1;
 	}
 }
+@-webkit-keyframes img02a{
+	0%{
+		-webkit-transform:scale(1);
+		opacity: 1
+	}
+	100%{
+		-webkit-transform:scale(1);
+		opacity: 0;
+	}
+}
 #control-4:checked ~ .box .img03{
 	position: absolute;
 	-webkit-transform:scale(0);
 	bottom: 0;
 	left: 100px;
-	-webkit-animation:img03 .1s ease-in-out 2.8s forwards;
+	-webkit-animation:img03 .1s ease-in-out 2.8s forwards,img03a 1.5s ease-in-out 4.6s forwards;
 	z-index: 2;
 }
 @-webkit-keyframes img03{
@@ -662,12 +758,22 @@ a{
 		opacity: 1;
 	}
 }
+@-webkit-keyframes img03a{
+	0%{
+		-webkit-transform:scale(1);
+		opacity: 1
+	}
+	100%{
+		-webkit-transform:scale(1);
+		opacity: 0;
+	}
+}
 #control-4:checked ~ .box .img04{
 	position: absolute;
 	-webkit-transform:scale(0);
 	top: 20px;
 	right: 20px;
-	-webkit-animation:img04 .1s ease-in-out 2.8s forwards;
+	-webkit-animation:img04 .1s ease-in-out 2.8s forwards,img04a 1.5s ease-in-out 4.8s forwards;
 	z-index: 2;
 }
 @-webkit-keyframes img04{
@@ -680,12 +786,22 @@ a{
 		opacity: 1;
 	}
 }
+@-webkit-keyframes img04a{
+	0%{
+		-webkit-transform:scale(1);
+		opacity: 1
+	}
+	100%{
+		-webkit-transform:scale(1);
+		opacity: 0;
+	}
+}
 #control-4:checked ~ .box .img05{
 	position: absolute;
 	-webkit-transform:scale(0);
 	bottom: 20px;
 	right: 200px;
-	-webkit-animation:img05 .1s ease-in-out 3s forwards;
+	-webkit-animation:img05 .1s ease-in-out 3s forwards,img05a 1.5s ease-in-out 5s forwards;
 	z-index: 2;
 }
 @-webkit-keyframes img05{
@@ -698,13 +814,23 @@ a{
 		opacity: 1;
 	}
 }
+@-webkit-keyframes img05a{
+	0%{
+		-webkit-transform:scale(1);
+		opacity: 1
+	}
+	100%{
+		-webkit-transform:scale(1);
+		opacity: 0;
+	}
+}
 #control-4:checked ~ .box .img06{
 	position: absolute;
 	-webkit-transform:scale(0);
 	bottom: 0px;
 	left: 50%;
 	margin-left: -150px;
-	-webkit-animation:img06 .1s ease-in-out 3.3s forwards;
+	-webkit-animation:img06 .1s ease-in-out 3.3s forwards,img06a 1.5s ease-in-out 5.1s forwards;
 	z-index: 2;
 }
 @-webkit-keyframes img06{
@@ -717,6 +843,16 @@ a{
 		opacity: 1;
 	}
 }
+@-webkit-keyframes img06a{
+	0%{
+		-webkit-transform:scale(1);
+		opacity: 1
+	}
+	100%{
+		-webkit-transform:scale(1);
+		opacity: 0;
+	}
+}
 #control-4:checked ~ .box .img08{
 	position: absolute;
 	-webkit-transform:scale(0);
@@ -725,7 +861,7 @@ a{
 	margin-left: -250px;
 	margin-top: -245px;
 	-webkit-animation:img08 .1s ease-in-out 3.6s forwards;
-	z-index: 2;
+	z-index: 3;
 }
 @-webkit-keyframes img08{
 	0%{
@@ -744,10 +880,10 @@ a{
 	left: 50%;
 	margin-left: -97px;
 	margin-top: -139px;
-	-webkit-animation:img08 .1s ease-in-out 4s forwards;
-	z-index: 2;
+	-webkit-animation:font .1s ease-in-out 4s forwards;
+	z-index: 3;
 }
-@-webkit-keyframes img08{
+@-webkit-keyframes font{
 	0%{
 		-webkit-transform:scale(2);
 		opacity: 0
@@ -757,12 +893,109 @@ a{
 		opacity: 1;
 	}
 }
+#control-4:checked ~ .box .panel-4-box .img09{
+	position: absolute;
+	bottom: 15%;
+	right: 25%;
+	-webkit-animation:img09 .6s ease-in-out 5.3s forwards;
+	z-index: 2;
+	opacity: 0
+}
+@-webkit-keyframes img09{
+	0%{
+		opacity: 0
+	}
+	100%{
+		opacity: 1;
+	}
+}
+#control-4:checked ~ .box .panel-4-box .img10{
+	position: absolute;
+	top: 7%;
+	right: 31%;
+	-webkit-animation:img10 .6s ease-in-out 5.3s forwards;
+	z-index: 2;
+	opacity: 0
+}
+@-webkit-keyframes img10{
+	0%{
+		opacity: 0
+	}
+	100%{
+		opacity: 1;
+	}
+}
+#control-4:checked ~ .box .panel-4-box .img11{
+	position: absolute;
+	bottom: 7%;
+	left: 31%;
+	-webkit-animation:img11 .6s ease-in-out 5.3s forwards;
+	z-index: 2;
+	opacity: 0
+}
+@-webkit-keyframes img11{
+	0%{
+		opacity: 0
+	}
+	100%{
+		opacity: 1;
+	}
+}
+#control-4:checked ~ .box .panel-4-box .img12{
+	position: absolute;
+	top: 2%;
+	left: 29%;
+	-webkit-animation:img12 .6s ease-in-out 5.3s forwards;
+	z-index: 2;
+	opacity: 0
+}
+@-webkit-keyframes img12{
+	0%{
+		opacity: 0
+	}
+	100%{
+		opacity: 1;
+	}
+}
+#control-4:checked ~ .box .panel-4-btn{
+	width: 160px;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	border:3px solid #fff;
+	position: absolute;
+	top: 74%;
+	left: 50%;
+	margin-left: -80px;
+	background: none;
+	outline: none;
+	border-radius: 6px;
+	font-size: 18px;
+	color:#fff;
+	cursor: pointer;
+	z-index: 3;
+	opacity: 0;
+	-webkit-animation:btn .6s ease-in-out 5.3s forwards;
+}
+#control-4:checked ~ .box .panel-4-btn:hover{
+	background: #fff;
+	color: #26282B;
+	-webkit-transition:all 1s;
+}
+@-webkit-keyframes btn{
+	0%{
+		opacity: 0
+	}
+	100%{
+		opacity: 1;
+	}
+}
 </style>
 </head>
 <body>
 <main>
 	<div class="controls">
-		<input type="radio" name="four" id="control-1" class="" checked="checked">
+		<input type="radio" name="four" id="control-1" class="">
 		<a href="#panel-1">
 			<i class="icon icon-birthday"></i>
 		</a>
@@ -774,7 +1007,7 @@ a{
 		<a href="#panel-3">
 			<i class="icon icon-emo-happy"></i>
 		</a>
-		<input type="radio" name="four" id="control-4" class="">
+		<input type="radio" name="four" id="control-4" class="" checked="checked">
 		<a href="#panel-4">
 			<i class="icon icon-pied-piper-alt"></i>
 		</a>
@@ -794,6 +1027,7 @@ a{
 					<p>Photo by</p>
 					<p>Michał Kulesza</p>
 				</div>
+				<button type="button" class="panel-1-btn">Learn more</button>
 			</section>
 
 			<section id="panel-2" class="box-panel">
@@ -810,7 +1044,9 @@ a{
 				<div class="panel-2-text2">
 					The rowans or mountain-ashes are shrubs or trees in genus Sorbus of family Rosaceae.
 				</div>
+				<button type="button" class="panel-2-btn">Learn more</button>
 			</section>
+
 			<section id="panel-3" class="box-panel">
 				<div class="panel-icon">
 					<i class="fa icon-emo-happy"></i>
@@ -845,6 +1081,7 @@ a{
 				<div class="panel-face-title1">
 					Face Face
 				</div>
+				<button type="button" class="panel-3-btn">Learn more</button>
 			</section>
 
 			<section id="panel-4" class="box-panel">
@@ -860,7 +1097,12 @@ a{
 					<img src="images/4-6.png" alt="" class="img06">
 					<img src="images/4-8.png" alt="" class="img08">
 					<img src="images/font.png" alt="" class="font">
+					<img src="images/4-9.png" alt="" class="img09">
+					<img src="images/4-10.png" alt="" class="img10">
+					<img src="images/4-11.png" alt="" class="img11">
+					<img src="images/4-12.png" alt="" class="img12">
 				</div>
+				<button type="button" class="panel-4-btn">Learn more</button>
 			</section>
 		</div>
 	</div>
